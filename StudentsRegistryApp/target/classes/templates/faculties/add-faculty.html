@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add faculty</title>
+</head>
+<body>
+<form th:action="@{/faculties/addFaculty}" th:object="${faculty}" method="post">
+    <table th:align="center">
+        <tr><td>Faculty name :</td><td><input type="text" name="facultyName"></td></tr>
+        <tr><td><button type="submit">Submit</button></td><td></td></tr>
+    </table>
+</form>
+</body>
+</html>

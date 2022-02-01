@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Students list</title>
+</head>
+<body>
+<div th:align="center">
+<table th:border="2">
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Phone</th>
+        <th>Specialization</th>
+        <th>Faculty</th>
+    </tr>
+    <tr th:each="student : ${students}">
+        <td th:text="${student.name}"></td>
+        <td th:text="${student.surname}"></td>
+        <td th:text="${student.phone}"></td>
+        <td th:text="${student.specialization.specializationName}"></td>
+        <td th:text="${student.specialization.faculty.facultyName}"></td>
+    </tr>
+</table>
+<br>
+<form th:action="@{/students/addStudent}" method="get" th:align="center">
+    <input type="submit" value="Add a student"/>
+</form>
+<br>
+<form th:action="@{/specializations/addSpecialization}" method="get" th:align="center">
+    <input type="submit" value="Add a specialization"/>
+</form>
+<br>
+<form th:action="@{/faculties/addFaculty}" method="get" th:align="center">
+    <input type="submit" value="Add a faculty"/>
+</form>
+<br><br>
+<a th:href="@{/sessions}">View sessions results</a>
+</div>
+</body>
+</html>

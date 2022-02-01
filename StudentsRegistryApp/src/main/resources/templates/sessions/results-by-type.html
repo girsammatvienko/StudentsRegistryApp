@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:align="center">
+    <table th:border="2">
+        <tr>
+            <th>Student</th>
+            <th>Session type</th>
+            <th>Specialization</th>
+            <th>Faculty</th>
+            <th>Math mark</th>
+            <th>Algorithms theory mark</th>
+            <th>PhysicsMark</th>
+            <th>Operation systems mark</th>
+        </tr>
+        <tr th:each="sessionResult : ${sessions}">
+            <td th:text="${sessionResult.student.name} + ' ' + ${sessionResult.student.surname}"></td>
+            <td th:text="${sessionResult.sessionType}"></td>
+            <td th:text="${sessionResult.student.specialization.specializationName}"></td>
+            <td th:text="${sessionResult.student.specialization.faculty.facultyName}"></td>
+            <td th:text="${sessionResult.mathMark}"></td>
+            <td th:text="${sessionResult.algorithmsTheoryMark}"></td>
+            <td th:text="${sessionResult.physicsMark}"></td>
+            <td th:text="${sessionResult.operationSystemsMark}"></td>
+        </tr>
+    </table>
+    <br>
+    <br><br>
+    <a th:href="@{/students}">View students list</a>
+    <br>
+</div>
+</body>
+</html>

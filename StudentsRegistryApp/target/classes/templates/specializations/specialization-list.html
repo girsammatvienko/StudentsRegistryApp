@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Specializations</title>
+</head>
+<body>
+<table th:border="2" th:align="center">
+    <tr>
+        <th>Specialization name</th>
+        <th>Faculty</th>
+    </tr>
+    <tr th:each="specialization : ${allSpecializations}">
+        <td th:text="${specialization.specializationName}"></td>
+        <td th:text="${specialization.faculty.facultyName}"></td>
+    </tr>
+</table>
+<br>
+<form th:action="@{/students/addStudent}" method="get" th:align="center">
+    <input type="submit" value="Add a student"/>
+</form>
+<br>
+<form th:action="@{/specializations/addSpecialization}" method="get" th:align="center">
+    <input type="submit" value="Add a specialization"/>
+</form>
+</body>
+</html>

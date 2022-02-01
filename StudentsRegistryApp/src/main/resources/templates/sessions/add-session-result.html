@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add session result</title>
+</head>
+<body>
+<form th:action="@{/sessions/addSessionResult}" th:object="${session}" method="post">
+    <table th:align="center">
+        <tr><td>Session type:</td>
+            <td><select name="studentId">
+                <option th:each="student : ${allStudents}"
+                        th:text="${student.name} + ' ' + ${student.surname}"
+                        th:value="${student.id}"/>
+            </select></tr>
+        <tr><td>Session type:</td>
+            <td><select name="sessionType">
+                <option th:each="type : ${T(com.example.studentsregistryapp.entity.SessionType).values()}"
+                        th:text="${type}"
+                        th:value="${type}"/>
+            </select></tr>
+        <tr><td>Math mark:</td><td><input type="text" name="mathMark"></td></tr>
+        <tr><td>Algorithms theory mark:</td><td><input type="text" name="algorithmsTheoryMark"></td></tr>
+        <tr><td>Physics mark:</td><td><input type="text" name="physicsMark"></td></tr>
+        <tr><td>Operation systems mark:</td><td><input type="text" name="operationSystemsMark"></td></tr>
+        <tr><td><button type="submit">Submit</button></td><td></td></tr>
+    </table>
+</form>
+</body>
+</html>

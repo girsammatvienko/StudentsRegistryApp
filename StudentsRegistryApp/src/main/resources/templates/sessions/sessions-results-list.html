@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sessions results</title>
+</head>
+<body>
+<div th:align="center">
+<table th:border="2">
+    <tr>
+        <th>Student</th>
+        <th>Session type</th>
+        <th>Specialization</th>
+        <th>Faculty</th>
+        <th>Math mark</th>
+        <th>Algorithms theory mark</th>
+        <th>PhysicsMark</th>
+        <th>Operation systems mark</th>
+    </tr>
+    <tr th:each="sessionResult : ${allSessionsResults}">
+        <td th:text="${sessionResult.student.name} + ' ' + ${sessionResult.student.surname}"></td>
+        <td th:text="${sessionResult.sessionType}"></td>
+        <td th:text="${sessionResult.student.specialization.specializationName}"></td>
+        <td th:text="${sessionResult.student.specialization.faculty.facultyName}"></td>
+        <td th:text="${sessionResult.mathMark}"></td>
+        <td th:text="${sessionResult.algorithmsTheoryMark}"></td>
+        <td th:text="${sessionResult.physicsMark}"></td>
+        <td th:text="${sessionResult.operationSystemsMark}"></td>
+    </tr>
+</table>
+    <br>
+    <form th:action="@{/sessions/addSessionResult}" method="get">
+        <input type="submit" value="Add session result"/>
+    </form>
+<br><br>
+<a th:href="@{/sessions/getDStudents}">View D-students</a>
+<a th:href="@{/sessions/getExcellentStudents}">View excellent students</a>
+<a th:href="@{/students}">View students list</a>
+<br><br><br><br>
+    <h3>Get results by session type</h3>
+    <form th:action="@{/sessions/getResultsByType}" method="get">
+    <select name="sessionType">
+        <option th:each="type : ${T(com.example.studentsregistryapp.entity.SessionType).values()}"
+                th:text="${type}"
+                th:value="${type}"/>
+    </select>
+    <button type="submit">Find</button>
+    </form>
+<br><br>
+    <h3>Get results by faculty</h3>
+    <form th:action="@{/sessions/getResultsByFaculty}" method="get">
+        <td>Faculty :</td>
+        <td><select name="facultyId">
+            <option th:each="faculty : ${faculties}" th:text="${faculty.facultyName}" th:value="${faculty.id}"/>
+        </select>
+        <button type="submit">Find</button>
+    </form>
+<br><br>
+<h3>Get results by specialization</h3>
+<form th:action="@{/sessions/getResultsBySpecialization}" method="get">
+    <td>Faculty :</td>
+    <td><select name="specializationId">
+        <option th:each="specialization : ${allSpecializations}" th:text="${specialization.specializationName}" th:value="${specialization.id}"/>
+    </select>
+        <button type="submit">Find</button>
+</form>
+</div>
+</body>
+</html>

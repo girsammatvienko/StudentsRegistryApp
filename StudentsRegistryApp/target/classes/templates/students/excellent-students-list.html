@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Excellent students</title>
+</head>
+<body>
+<div th:align="center">
+    <h2>Excellent students</h2>
+    <table th:border="2">
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Phone</th>
+            <th>Specialization</th>
+            <th>Faculty</th>
+        </tr>
+        <tr th:each="student : ${excellentStudents}">
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.surname}"></td>
+            <td th:text="${student.phone}"></td>
+            <td th:text="${student.specialization.specializationName}"></td>
+            <td th:text="${student.specialization.faculty.facultyName}"></td>
+        </tr>
+    </table>
+    <br><br>
+    <a th:href="@{/sessions}">View sessions results</a>
+</div>
+</body>
+</html>

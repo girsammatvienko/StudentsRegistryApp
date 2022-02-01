@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add specialization</title>
+</head>
+<body>
+<form th:action="@{/specializations/addSpecialization}" th:object="${specialization}" method="post">
+    <table th:align="center">
+        <tr><td>Specialization name :</td><td><input type="text" name="specializationName"></td></tr>
+        <tr><td>Faculty :</td>
+            <td><select name="facultyId">
+                <option th:each="faculty : ${allFaculties}" th:text="${faculty.facultyName}" th:value="${faculty.id}"/>
+            </select></tr>
+        <tr><td><button type="submit">Submit</button></td><td></td></tr>
+    </table>
+</form>
+</body>
+</html>
